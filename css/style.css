@@ -1,0 +1,78 @@
+/* Reset & Body */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+body {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  background-color: hsl(210, 46%, 95%);
+}
+
+/* Grid wrapper for testimonials */
+.testimonials-grid {
+  display: grid;
+  gap: 1.5rem; /* matches Bootstrap’s gx-4/gy-4 */
+  grid-template-columns: 1fr;
+}
+
+/* 2 columns on medium screens */
+@media (min-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 4x2 grid on large screens, with Kira spanning 2 rows */
+@media (min-width: 992px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+  }
+  .testimonial-daniel   { grid-column: 1 / span 2; grid-row: 1; }
+  .testimonial-jonathan { grid-column: 3;           grid-row: 1; }
+  .testimonial-kira     { grid-column: 4;           grid-row: 1 / span 2; }
+  .testimonial-jeanette { grid-column: 1;           grid-row: 2; }
+  .testimonial-patrick  { grid-column: 2 / span 2;  grid-row: 2; }
+}
+
+/* Common testimonial card styling */
+.testimonial {
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  display: flex;
+}
+
+/* Profile image */
+.profile-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+/* Individual card colors */
+.testimonial-daniel {
+  background-color: hsl(263, 55%, 52%);
+  background-image: url('../images/bg-pattern-quotation.svg');
+  background-repeat: no-repeat;
+  background-position: top right 10%;
+  color: white;
+}
+.testimonial-jonathan {
+  background-color: hsl(217, 19%, 35%);
+  color: white;
+}
+.testimonial-patrick {
+  background-color: hsl(219, 29%, 14%);
+  color: white;
+}
+.testimonial-jeanette,
+.testimonial-kira {
+  background-color: white;
+  color: hsl(217, 19%, 35%);
+}
+
+/* Footer link */
+footer a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+}
