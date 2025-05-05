@@ -1,91 +1,75 @@
-# Frontend Mentor - Testimonials grid section
+# Testimonials Grid Section
 
-![Design preview for the Testimonials grid section coding challenge](./design/desktop-preview.jpg)
+## Overview
 
-## Welcome! 👋
+This project implements the "Testimonials Grid Section" challenge from Frontend Mentor using Bootstrap and custom CSS. The design handoff was provided as a Figma file, and the goal was to create a responsive, pixel-perfect layout that matches the given mockups.
 
-Thanks for checking out this front-end coding challenge.
+* **Frontend Mentor Challenge**: [Testimonials Grid Section](https://www.frontendmentor.io/challenges/testimonials-grid-section-Nnw6J7Un7)
+* **Live Demo**: *Add a link if deployed*
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Table of Contents
 
-**To do this challenge, you need a basic understanding of HTML and CSS.**
+1. [Features](#features)
+2. [Getting Started](#getting-started)
+3. [Approach](#approach)
+4. [Custom CSS Grid](#custom-css-grid)
+5. [Reflection](#reflection)
+6. [Design Files](#design-files)
 
-## The challenge
+## Features
 
-Your challenge is to build out this testimonials grid section and get it looking as close to the design as possible.
+* Responsive layout using Bootstrap’s grid system and utility classes
+* Five testimonial cards with distinct styles and backgrounds
+* Mobile-first design, scaling to tablets (2 columns) and desktops (4×2 grid)
+* Custom CSS to span Kira’s card across two rows on large screens
+* Semantic HTML and clear, descriptive commits
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+## Getting Started
 
-Your users should be able to:
+1. **Clone the repository**
 
-- View the optimal layout for the site depending on their device's screen size
+   ```bash
+   git clone https://github.com/Bvega/testimonial-grid-section-main.git
+   cd testimonial-grid-section-main
+   git checkout bootstrap-refactor
+   ```
+2. **Open `index.html`** in your browser (or serve via Live Server in VS Code).
+3. **Review the code** in `css/style.css` for the custom grid rules.
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+## Approach
 
-## Where to find everything
+1. **Bootstrap Setup**: Included Bootstrap via CDN in the `<head>` of `index.html`.
+2. **Markup Refactor**: Converted the original grid into a structured set of `<div>`s with Bootstrap classes (`container`, `row`, `col-*`, etc.).
+3. **Utility Classes**: Used Bootstrap’s spacing, typography, and utility classes to match the design’s padding, margins, and text styles.
+4. **Custom Grid Override**: Added a CSS Grid layout on large screens (`@media (min-width: 992px)`) to explicitly place each testimonial card, ensuring Kira’s card spans top to bottom.
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+## Custom CSS Grid
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+In `css/style.css`, under the `@media (min-width: 992px)` section, the custom grid overrides Bootstrap’s `.row`:
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+```css
+.testimonials-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+}
+.testimonial-daniel   { grid-column: 1 / span 2; grid-row: 1; }
+.testimonial-jonathan { grid-column: 3;           grid-row: 1; }
+.testimonial-kira     { grid-column: 4;           grid-row: 1 / span 2; }
+.testimonial-jeanette { grid-column: 1;           grid-row: 2; }
+.testimonial-patrick  { grid-column: 2 / span 2;  grid-row: 2; }
+```
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+## Reflection
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+I encountered challenges aligning the tall testimonial (Kira’s card) to span both rows within Bootstrap’s row/column system. To solve this, I used a CSS Grid wrapper on large screens, which gave precise control over the card positions while retaining Bootstrap for the core responsive behavior. Next time, I would explore using only Bootstrap subclasses (empty placeholder columns) for a pure-utility approach, but the CSS Grid solution provided the most straightforward, maintainable result.
 
-## Building your project
+## Design Files
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+* Desktop and mobile designs available in the `design/` folder.
+* Figma prototype link provided in the challenge description.
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+---
 
-## Deploying your project
-
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
-
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
-
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
-
-## Create a custom `README.md`
-
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
-
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
-
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
-
-## Submitting your solution
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+*Project completed by Bolivar Vega Leon*
